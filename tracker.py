@@ -11,3 +11,16 @@ with st.form("resin_form"):
     if submitted:
         st.session_state.tasks.append({"Task": task, "Resin": resin, "Note": note})
         st.success("69... Nice!")
+    
+    # Display tasks as cards
+for i, task in enumerate(st.session_state.tasks):
+    with st.container():
+        col1, col2 = st.columns([3, 1])
+        with col1:
+            st.markdown(f"**{task['Task']}**")
+            st.caption(task['Note'] or "No note")
+        with col2:
+            st.markdown(f"**{task['Resin']}**")
+            st.caption("Resin")
+        st.divider()
+
